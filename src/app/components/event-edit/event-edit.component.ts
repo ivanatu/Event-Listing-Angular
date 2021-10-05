@@ -32,7 +32,7 @@ export class EventEditComponent implements OnInit {
       name: ['', [Validators.required]],
       date: ['', [Validators.required]],
       location: ['', [Validators.required]],
-      expectedWeather: ['', [Validators.required, Validators.pattern('^[0-9]+$')]]
+      expectedWeather: ['', [Validators.required]]
     })
   }
 
