@@ -12,7 +12,6 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 export class EventCreateComponent implements OnInit {  
   submitted = false;
   eventForm: FormGroup;
-  EventProfile:any = ['Finance', 'BDM', 'HR', 'Sales', 'Admin']
   
   constructor(
     public fb: FormBuilder,
@@ -36,12 +35,7 @@ export class EventCreateComponent implements OnInit {
     })
   }
 
-  // Choose designation with select dropdown
-  updateProfile(e){
-    this.eventForm.get('designation').setValue(e, {
-      onlySelf: true
-    })
-  }
+  
   public AddressChange(address: any) {
     //setting address from API to local variable
      this.eventForm.get('location').setValue(address.formatted_address);

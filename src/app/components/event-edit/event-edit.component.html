@@ -3,7 +3,7 @@
      <!-- form card register -->
      <div class="card card-outline-secondary">
        <div class="card-header">
-         <h3 class="mb-0">Edit Employee</h3>
+         <h3 class="mb-0">Edit Event</h3>
        </div>
        <div class="card-body">
          <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
@@ -28,18 +28,12 @@
            </div>
 
            <div class="form-group">
-             <label for="inputPassword3">Location</label>
-             <select class="custom-select form-control" (change)="updateProfile($event.target.value)"
-               formControlName="location">
-               <option value="">Choose...</option>
-               <option *ngFor="let eventProfile of EventProfile" value="{{eventProfile}}">{{eventProfile}}
-               </option>
-             </select>
-             <!-- error -->
-             <div class="invalid-feedback" *ngIf="submitted && myForm.location.errors?.required">
-               Choose location.
-             </div>
-           </div>
+            <label for="inputPassword3">Location</label>
+            <input class="form-control" type="text" formControlName="location" ngx-google-places-autocomplete [options]='options'  (onAddressChange)="AddressChange($event)"/>
+            <div class="invalid-feedback" *ngIf="submitted && myForm.location.errors?.required">
+              Choose designation.
+            </div>
+          </div>
 
            <div class="form-group">
              <label for="inputVerify3">Expected Weather</label>

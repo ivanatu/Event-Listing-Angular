@@ -36,13 +36,6 @@ export class EventEditComponent implements OnInit {
     })
   }
 
-  // Choose options with select-dropdown
-  updateProfile(e) {
-    this.editForm.get('location').setValue(e, {
-      onlySelf: true
-    })
-  }
-
   // Getter to access form control
   get myForm() {
     return this.editForm.controls;
