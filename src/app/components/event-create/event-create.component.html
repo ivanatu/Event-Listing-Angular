@@ -1,0 +1,61 @@
+<div class="row justify-content-center">
+  <div class="col-md-4 register-employee">
+    <!-- form card register -->
+    <div class="card-body">
+      <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="inputName">Name</label>
+          <input class="form-control" type="text" formControlName="name">
+          <!-- error -->
+          <div class="invalid-feedback" *ngIf="submitted && myForm.name.errors?.required">
+            Name is required.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputEmail3">Date</label>
+          <input class="form-control" type="date" formControlName="date">
+          <!-- error -->
+          <div class="invalid-feedback" *ngIf="submitted && myForm.date.errors?.required">
+            Enter date.
+          </div>
+          <div class="invalid-feedback" *ngIf="submitted && myForm.date.errors?.pattern">
+            Enter future date.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputPassword3">Location</label>
+          <input class="form-control" type="text" formControlName="location" ngx-google-places-autocomplete [options]='options'  (onAddressChange)="AddressChange($event)"/>
+          <!-- <select class="custom-select form-control" (change)="updateProfile($event.target.value)"
+            formControlName="location">
+            <option value="">Choose...</option>
+            <option *ngFor="let eventProfile of EventProfile" value="{{eventProfile}}">{{eventProfile}}
+            </option>
+          </select> -->
+          <!-- error -->
+          <div class="invalid-feedback" *ngIf="submitted && myForm.location.errors?.required">
+            Choose designation.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputVerify3">Expected Weather</label>
+          <input class="form-control" type="text" formControlName="expectedWeather">
+          <!-- error -->
+          <div class="invalid-feedback" *ngIf="submitted && myForm.expectedWeather.errors?.required">
+            Enter Expected Weather.
+          </div>
+          <div class="invalid-feedback" *ngIf="submitted && myForm.expectedWeather.errors?.pattern">
+            Enter Expected Weather.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <button class="btn btn-success btn-lg btn-block" type="submit">Register</button>
+        </div>
+      </form>
+
+    </div>
+  </div><!-- form card register -->
+</div>

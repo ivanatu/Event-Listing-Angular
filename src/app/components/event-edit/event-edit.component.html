@@ -1,0 +1,63 @@
+ <div class="row justify-content-center">
+   <div class="col-md-4 register-employee">
+     <!-- form card register -->
+     <div class="card card-outline-secondary">
+       <div class="card-header">
+         <h3 class="mb-0">Edit Employee</h3>
+       </div>
+       <div class="card-body">
+         <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+
+           <div class="form-group">
+             <label for="inputName">Name</label>
+             <input class="form-control" type="text" formControlName="name">
+             <div class="invalid-feedback" *ngIf="submitted && myForm.name.errors?.required">
+               Name is required.
+             </div>
+           </div>
+           <div class="form-group">
+             <label for="inputEmail3">Date</label>
+             <input class="form-control" type="date" formControlName="date">
+             <!-- error -->
+             <div class="invalid-feedback" *ngIf="submitted && myForm.date.errors?.required">
+               Enter your date.
+             </div>
+             <div class="invalid-feedback" *ngIf="submitted && myForm.date.errors?.pattern">
+               Enter future date.
+             </div>
+           </div>
+
+           <div class="form-group">
+             <label for="inputPassword3">Location</label>
+             <select class="custom-select form-control" (change)="updateProfile($event.target.value)"
+               formControlName="location">
+               <option value="">Choose...</option>
+               <option *ngFor="let eventProfile of EventProfile" value="{{eventProfile}}">{{eventProfile}}
+               </option>
+             </select>
+             <!-- error -->
+             <div class="invalid-feedback" *ngIf="submitted && myForm.location.errors?.required">
+               Choose location.
+             </div>
+           </div>
+
+           <div class="form-group">
+             <label for="inputVerify3">Expected Weather</label>
+             <input class="form-control" type="text" formControlName="expectedWeather">
+             <!-- error -->
+             <div class="invalid-feedback" *ngIf="submitted && myForm.expectedWeather.errors?.required">
+               Enter your expected Weather
+             </div>
+             <div class="invalid-feedback" *ngIf="submitted && myForm.expectedWeather.errors?.pattern">
+               Enter Expected Weather
+             </div>
+           </div>
+
+           <div class="form-group">
+             <button class="btn btn-success btn-lg btn-block" type="submit">Update</button>
+           </div>
+         </form>
+       </div>
+     </div><!-- form  -->
+   </div>
+ </div>
